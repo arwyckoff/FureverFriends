@@ -1,4 +1,4 @@
-namespace site;
+namespace FureverFriends;
 
 public class WeatherForecast
 {
