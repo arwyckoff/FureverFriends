@@ -30,4 +30,22 @@ public class DogsController : ControllerBase
 
         return dog;
     }
+
+    [HttpPut]
+    public async Task<Dog> Put(Dog dog)
+    {
+        _database.Dogs.Update(dog);
+        await _database.SaveChangesAsync();
+
+        return dog;
+    }
+
+    [HttpDelete]
+    public async Task Delete(int Id)
+    {
+        var dog = _database.Dogs.Where(x => x.Id == Id).FirstOrDefault();
+
+        _database.Dogs.Remove(dog);
+        await _database.SaveChangesAsync();
+    }
 }
