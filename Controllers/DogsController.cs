@@ -5,21 +5,32 @@ namespace FureverFriends.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class DogsController : ControllerBase
+public class DogCrudController : ControllerBase
 {
-    private readonly ILogger<DogsController> _logger;
+    private readonly ILogger<DogCrudController> _logger;
 
     private dbContext _database = new dbContext();
 
-    public DogsController(ILogger<DogsController> logger)
+    private DogService _dogService = new DogService();
+
+    public DogCrudController(ILogger<DogCrudController> logger)
     {
         _logger = logger;
     }
 
     [HttpGet]
+    [Route("GetDog")]
     public Dog Get(int Id)
     {
-        return _database.Dogs.Where(x => x.Id == Id).FirstOrDefault();
+        return _dogService.GetDog(Id);
+    }
+
+    [HttpGet]
+    [Route("GetDogs")]
+
+    public List<Dog> Get()
+    {
+        return _dogService.GetDogs();
     }
 
     [HttpPost]

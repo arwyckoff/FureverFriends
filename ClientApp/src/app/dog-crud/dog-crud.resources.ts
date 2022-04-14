@@ -11,7 +11,6 @@ export class DogCrudResources {
   ) {}
 
   getDogs () {
-
-    return this.http.get<Dog[]>('weatherforecast').toPromise();
+    return this.http.get<Dog[]>('DogCrud/GetDogs').toPromise();
   }
 }
