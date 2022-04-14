@@ -9,6 +9,7 @@ import { Dog } from 'src/app/typings/dog.typing';
 })
 export class DogsTableComponent implements OnInit {
   @Input() dogs: Dog[] = [];
+  @Input() isSearch: boolean = false;
 
   constructor(private router: Router) {  }
 

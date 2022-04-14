@@ -1,0 +1,22 @@
+#dogstable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #dogstable td {
+    border: 1px solid rgb(8, 20, 66);
+    padding: 8px;
+  }
+  
+  #dogstable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #dogstable tr:hover {background-color: #ddd;}
+  
+  #dogstable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(5, 21, 124);
+    color: white;
+  }

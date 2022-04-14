@@ -1,4 +1,15 @@
-<h1>Find Friends</h1>
+<h1><b>Find Friends</b></h1>
+<br>
+<p><b>Looking for a friend? Use the search below!</b></p>
 
-<p>Where are your friends?</p>
+<form [formGroup]="formGroup">
+    <div class="form-group">
+      <input formControlName="term" type="text" class="form-control dogsearch" id="dogNameSearch" aria-describedby="emailHelp" placeholder="Search by Dog's name">
+    </div>
+    <br>
+    <button (click)="getSearch()" type="submit" class="btn btn-primary">Search</button>
+  </form>
+<br>
+  <app-dogs-table *ngIf="searchResult.length > 0" [dogs]="searchResult" [isSearch]=true>
 
+  </app-dogs-table>
