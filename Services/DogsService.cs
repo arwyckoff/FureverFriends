@@ -31,7 +31,8 @@ public class DogService
   
     public List<Dog> SearchDogs(string term)
     {
-      return _database.Dogs.Where(dog => dog.Name == term || dog.Name.Contains(term)).ToList();
+      term = term.ToLower();
+      return _database.Dogs.Where(dog => dog.Name.ToLower() == term || dog.Name.ToLower().Contains(term)).ToList();
     }
 
     public async Task<Dog> CreateOrUpdateDog(Dog dog)
