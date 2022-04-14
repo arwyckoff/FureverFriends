@@ -7,6 +7,7 @@ const PROXY_CONFIG = [
   {
     context: [
       "/DogCrud",
+      "/Match"
    ],
     target: target,
     secure: false,

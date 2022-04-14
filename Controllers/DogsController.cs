@@ -20,7 +20,7 @@ public class DogCrudController : ControllerBase
 
     [HttpGet]
     [Route("GetDog")]
-    public Dog Get(int Id)
+    public Dog GetDog(int Id)
     {
         return _dogService.GetDog(Id);
     }
@@ -28,35 +28,33 @@ public class DogCrudController : ControllerBase
     [HttpGet]
     [Route("GetDogs")]
 
-    public List<Dog> Get()
+    public List<Dog> GetDogs()
     {
         return _dogService.GetDogs();
     }
 
     [HttpPost]
-    public async Task<Dog> Post(Dog dog)
+    [Route("SearchDogs")]
+    public List<Dog> SearchDogs(string term)
     {
-        await _database.Dogs.AddAsync(dog);
-        await _database.SaveChangesAsync();
-
-        return dog;
+        return _dogService.SearchDogs(term);
     }
-
-    [HttpPut]
-    public async Task<Dog> Put(Dog dog)
+  
+    [HttpPost]
+    [Route("CreateOrUpdateDog")]
+    public async Task<Dog> CreateOrUpdate(Dog dog)
     {
-        _database.Dogs.Update(dog);
-        await _database.SaveChangesAsync();
+        await _dogService.CreateOrUpdateDog(dog);
 
         return dog;
     }
 
     [HttpDelete]
-    public async Task Delete(int Id)
+    [Route("DeleteDog")]
+    public async Task<int> DeleteDog(int Id)
     {
-        var dog = _database.Dogs.Where(x => x.Id == Id).FirstOrDefault();
+        await _dogService.DeleteDog(Id);
 
-        _database.Dogs.Remove(dog);
-        await _database.SaveChangesAsync();
+        return Id;
     }
 }
