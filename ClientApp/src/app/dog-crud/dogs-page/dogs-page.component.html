@@ -1,0 +1,12 @@
+DOGS PAGE
+
+<button
+  (click)="handleNavigateToCreateEdit('new')"
+  class="btn btn-primary">
+  Create dawg
+</button>
+
+
+<app-dogs-table
+  [dogs]="dogs">
+</app-dogs-table>
