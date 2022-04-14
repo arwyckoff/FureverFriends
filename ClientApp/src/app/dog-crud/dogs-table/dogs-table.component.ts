@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Dog } from 'src/app/typings/dog.typing';
 
 @Component({
@@ -8,6 +9,12 @@ import { Dog } from 'src/app/typings/dog.typing';
 })
 export class DogsTableComponent implements OnInit {
   @Input() dogs: Dog[] = [];
-  constructor() { }
+
+  constructor(private router: Router) {  }
+
   ngOnInit(): void { }
+
+  handleNavigateToCreateEdit (dogId: number|string) {
+    this.router.navigate(['dogs/' + dogId]);
+  }
 }

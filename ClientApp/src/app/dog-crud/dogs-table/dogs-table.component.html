@@ -1,5 +1,26 @@
-DOGS TABLE
-
-<div *ngFor="let dog of dogs">
-  {{ dog.name }}
-</div>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Breed</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Location</th>
+      <th scope="col">Size</th>
+      <th scope="col">Interests</th>
+      <th scope="col"><button (click)="handleNavigateToCreateEdit('new')" class="btn btn-primary">Add Dog</button></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dog of dogs">
+      <td>{{ dog.name }}</td>
+      <td>{{ dog.breed }}</td>
+      <td>DESCRIPTION</td>
+      <td>DOB</td>
+      <td>LOCATION</td>
+      <td>SIZE</td>
+      <td>INTERESTS</td>
+      <th><button (click)="handleNavigateToCreateEdit(dog.id)" class="btn btn-primary">Edit Dog</button></th>
+    </tr>
+  </tbody>
+</table>

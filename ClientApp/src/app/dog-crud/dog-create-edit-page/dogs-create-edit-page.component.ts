@@ -10,11 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 export class DogCreateEditPageComponent implements OnInit {
   dogId: number|string = '';
   formGroup: FormGroup;
+  createOrEditHeader: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder
-  ) { }
+  ) {
+    if (this.isNew){
+      this.createOrEditHeader = ''
+    }
+  }
 
   get isNew () {
     return this.dogId === 'new';
@@ -22,10 +27,17 @@ export class DogCreateEditPageComponent implements OnInit {
 
   async ngOnInit() { 
     this.dogId = this.activatedRoute.snapshot.params.id;
-    // If not new, fetch dog detail and use to populate this form group
-    this.formGroup = this.formBuilder.group({
-      name: '',
-      breed: ''
-    });
+
+    if (!this.isNew){
+      this.formGroup = this.formBuilder.group({
+        name: 'B',
+        breed: ''
+      });
+    } else{
+      this.formGroup = this.formBuilder.group({
+        name: 'A',
+        breed: ''
+      });
+    }
   }
 }

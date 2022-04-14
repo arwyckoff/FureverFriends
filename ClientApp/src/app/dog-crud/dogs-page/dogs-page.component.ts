@@ -1,6 +1,5 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Dog } from 'src/app/typings/dog.typing';
 import { DogCrudService } from '../dog-crud.service';
 
@@ -12,15 +11,10 @@ import { DogCrudService } from '../dog-crud.service';
 export class DogsPageComponent implements OnInit {
   dogs: Dog[] = [];
   constructor(
-    private dogCrudService: DogCrudService,
-    private router: Router
+    private dogCrudService: DogCrudService
   ) { }
 
   async ngOnInit() {
     this.dogs = await this.dogCrudService.getDogs();
    }
-
-  handleNavigateToCreateEdit (dogId: number|string) {
-    this.router.navigate(['dogs/' + dogId]);
-  }
 }
