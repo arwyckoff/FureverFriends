@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Dog } from 'src/app/typings/dog.typing';
+import { DogCrudService } from '../dog-crud.service';
 
 @Component({
   selector: 'app-dogs-create-edit-page',
@@ -10,34 +12,60 @@ import { ActivatedRoute } from '@angular/router';
 export class DogCreateEditPageComponent implements OnInit {
   dogId: number|string = '';
   formGroup: FormGroup;
-  createOrEditHeader: string = '';
+  dog: Dog = null;
+  header: string = '';
+  buttonText: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
-  ) {
-    if (this.isNew){
-      this.createOrEditHeader = ''
-    }
-  }
+    private formBuilder: FormBuilder,
+    private dogCrudService: DogCrudService
+  ) { }
 
   get isNew () {
     return this.dogId === 'new';
   }
 
-  async ngOnInit() { 
+  async ngOnInit() {
     this.dogId = this.activatedRoute.snapshot.params.id;
+    
+    await this.handleFormGroup();
+  }
 
-    if (!this.isNew){
+  private async handleFormGroup() {
+    if (this.isNew) {
+      this.header = 'Adding New Dog!';
+      this.buttonText = 'Add';
+
       this.formGroup = this.formBuilder.group({
-        name: 'B',
-        breed: ''
+        name: '',
+        breed: '',
+        description: '',
+        dob: '',
+        location: '',
+        interests: '',
+        size: ''
       });
-    } else{
+    } else {
+      const dog = await this.dogCrudService.getDog(this.dogId as number);
+
+      this.header = 'Editing ' + dog.name + '!';
+      this.buttonText = 'Update';
+      
       this.formGroup = this.formBuilder.group({
-        name: 'A',
-        breed: ''
+        name: dog.name,
+        breed: dog.breed,
+        description: '',
+        dob: '',
+        location: '',
+        interests: '',
+        size: ''
       });
     }
+  }
+
+  handleCreateEdit (dogId: number|null) {
+    //TODO: Replace with call to endpoint
+    this.dogCrudService.getDog(1);
   }
 }

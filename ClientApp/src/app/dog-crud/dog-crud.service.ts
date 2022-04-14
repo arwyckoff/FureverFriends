@@ -24,4 +24,17 @@ export class DogCrudService {
       return [];
     }
   }
+
+  async getDog (id: number) {
+    try {
+      const data = await this.dogCrudResources.getDog(id);
+  
+      return data;
+    } catch (e) {
+      console.error(e);
+
+
+      return null;
+    }
+  }
 }

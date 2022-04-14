@@ -13,4 +13,8 @@ export class DogCrudResources {
   getDogs () {
     return this.http.get<Dog[]>('DogCrud/GetDogs').toPromise();
   }
+
+  getDog (id: number) {
+    return this.http.get<Dog>('DogCrud/GetDog?Id=' + id).toPromise();
+  }
 }

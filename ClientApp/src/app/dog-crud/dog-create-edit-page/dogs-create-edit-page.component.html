@@ -1,7 +1,52 @@
-{{ dogId }}
+<h1>{{ header }}</h1>
 
-<div [formGroup]="formGroup">
-  <label for="exampleInputEmail1" class="form-label">Name</label>
-  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
-  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div *ngIf="formGroup" [formGroup]="formGroup">
+  <div class="row">
+    <div class="col">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Dog's Name">
+    </div>
+    <div class="col">
+      <label for="breed" class="form-label">Breed</label>
+      <input type="text" class="form-control" id="breed" formControlName="breed" placeholder="Dog's Breed">
+    </div>
+  </div>
+  <br />
+  <div>
+    <label for="description" class="form-label">Description</label>
+    <textarea type="text" class="form-control" id="description" formControlName="description" placeholder="Dog Description"></textarea>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col">
+      <label for="dob" class="form-label">Date of Birth</label>
+      <input type="text" class="form-control" id="dob" formControlName="dob" placeholder="Dog's Date of Birth">
+    </div>
+    <div class="col">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" class="form-control" id="location" formControlName="location" placeholder="Dog's Location">
+    </div>
+  </div>
+  <br />
+  <div>
+    <label for="interests" class="form-label">Interests</label>
+    <textarea type="text" class="form-control" id="interests" formControlName="interests" placeholder="Dog's Interests"></textarea>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col">
+      <label for="size" class="form-label">Size</label>
+      <select class="form-control form-select" id="size" formControlName="size">
+        <option>Extra Small</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+        <option>Extra Large</option>
+      </select>
+    </div>
+    <div class="col" style="position: relative;">
+      <button style="position: absolute; bottom: 0position:relative;;" (click)="handleCreateEdit(dog.id)" class="btn btn-primary">{{ buttonText }}</button>
+    </div>
+  </div>
+  <br />
 </div>
