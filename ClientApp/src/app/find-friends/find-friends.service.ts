@@ -21,4 +21,17 @@ export class FindFriendsService {
     return [];
     }
   }
+
+  async getFriend(dogId: number)
+  {
+      try {
+        const data = await this.findFriendsResources.getFriends(dogId);
+
+        return data;
+      } catch (e) {
+        console.error(e);
+  
+      return [];
+      }
+  }
 }

@@ -1,0 +1,18 @@
+<h1><b>Friendships</b></h1>
+
+<table id="friendstable">
+    <thead>
+        <tr>
+            <th scope="col" style="text-align:center">Friend Name</th>
+            <th scope="col" style="text-align:center">Friendship Type</th>
+            <th scope="col" style="text-align:center">Date Added</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let friendship of friendships">
+            <td style="text-align:left">{{ friendship.dogAName != dog.name ? friendship.dogAName : friendship.dogBName }}</td>
+            <td style="text-align:left">{{ friendship.friendshipType }}</td>
+            <td style="text-align:left">{{ friendship.dateAdded }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -10,6 +10,7 @@ import { DogsTableComponent } from './dog-crud/dogs-table/dogs-table.component';
 import { FindFriendsPageComponent } from './find-friends/find-friends-page/find-friends-page.component';
 import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { FriendsPageComponent } from './find-friends/friends-page/friends-page.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     FindFriendsPageComponent,
     DogsTableComponent,
     DogsPageComponent,
-    DogCreateEditPageComponent
+    DogCreateEditPageComponent,
+    FriendsPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'find-friends', component: FindFriendsPageComponent },
       { path: 'dogs', component: DogsPageComponent, pathMatch: 'full' },
-      { path: 'dogs/:id', component: DogCreateEditPageComponent, pathMatch: 'full'}
+      { path: 'dogs/:id', component: DogCreateEditPageComponent, pathMatch: 'full'},
+      { path: 'friends/:id', component: FriendsPageComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],
