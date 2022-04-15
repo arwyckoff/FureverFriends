@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FriendsPageComponent } from './find-friends/friends-page/friends-page.component';
 import { DogSizeTextPipe } from './dog-crud/dog-size.pipe';
+import { FriendShipTypePipe } from './find-friends/friendshiptype.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DogSizeTextPipe } from './dog-crud/dog-size.pipe';
     DogsPageComponent,
     DogCreateEditPageComponent,
     FriendsPageComponent,
-    DogSizeTextPipe
+    DogSizeTextPipe,
+    FriendShipTypePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

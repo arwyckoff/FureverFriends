@@ -3,8 +3,9 @@ export interface Friendship {
     dogOneName: string;
     dogTwoID: number;
     dogTwoName: string;
-    friendshipType: string;
+    friendshipTypeId: number;
     dateAdded: Date;
+    id: number
   }
 
 export enum FriendshipType {
