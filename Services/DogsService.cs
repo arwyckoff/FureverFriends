@@ -32,7 +32,7 @@ public class DogService
     public List<Dog> SearchDogs(string term)
     {
       term = term.ToLower();
-      return _database.Dogs.Where(dog => dog.Name.ToLower() == term || dog.Name.ToLower().Contains(term)).ToList();
+      return _database.Dogs.Where(dog => dog.Name.ToLower().Contains(term)).ToList();
     }
 
     public async Task<Dog> CreateOrUpdateDog(Dog dog)
@@ -66,6 +66,5 @@ public class DogService
       {
         throw new InvalidOperationException("Cannot find dog");
       }
-
     }
 }

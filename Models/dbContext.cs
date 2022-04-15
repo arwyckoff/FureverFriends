@@ -15,6 +15,7 @@ namespace FureverFriends.Models
 
         public virtual DbSet<BuildVersion> BuildVersions { get; set; } = null!;
         public virtual DbSet<Dog> Dogs { get; set; } = null!;
+        public virtual DbSet<Friendship> Friendships { get; set; } = null!;
         public virtual DbSet<Size> Sizes { get; set; } = null!;
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; } = null!;
 
@@ -87,6 +88,16 @@ namespace FureverFriends.Models
                 //     .HasForeignKey(entity => entity.SizeId)
                 //     .IsRequired(false);
                 
+            });
+
+            modelBuilder.Entity<Friendship>(entity =>
+            {
+                entity.Property(e => e.DogOneName)
+                  .HasMaxLength(100)
+                  .IsUnicode(false);
+                entity.Property(e => e.DogTwoName)
+                  .HasMaxLength(100)
+                  .IsUnicode(false);
             });
 
             modelBuilder.Entity<ErrorLog>(entity =>
