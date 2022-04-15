@@ -36,5 +36,21 @@ public class FriendshipCrudController : ControllerBase
         return friendship;
     }
 
+    [Route("GetAllFriendships")]
+    [HttpGet]
+    public List<Friendship> GetFriendships()
+    {
+
+        return _friendshipService.GetFriendships();
+    }
+
+    [Route("GetFriendshipsForDog")]
+    [HttpGet]
+    public List<Friendship> GetFriendship(int dogId)
+    {
+
+        return _friendshipService.GetFriendships(dogId);
+    }
+
 
 }

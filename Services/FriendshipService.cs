@@ -42,4 +42,20 @@ public class FriendshipService
 
       return friendship;
     }
+
+    public List<Friendship> GetFriendships (int? Id = null)
+    {
+      if (Id.HasValue)
+      {
+        int dogId = Id.Value;
+        var friendShips = _database.Friendships.Where(x => x.DogOneId == Id || x.DogTwoId == Id).ToList();
+        
+        return friendShips;
+      }
+      else 
+      {
+
+      return _database.Friendships.ToList();
+      }
+    }
 }
