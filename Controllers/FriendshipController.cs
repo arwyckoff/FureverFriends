@@ -18,11 +18,22 @@ public class FriendshipCrudController : ControllerBase
         _logger = logger;
     }
 
+    [Route("DeleteFriendship")]
+    [HttpPost]
+    public async Task<int> DeleteFriendship(int FriendshipId)
+    {
+        await _friendshipService.DeleteFriendship(FriendshipId);
+
+        return FriendshipId;
+    }
+
     [Route("CreateEditFriendship")]
     [HttpPost]
-    public void CreateEditFriendship(int DogOneId, int DogTwoId, int FriendshipTypeId)
+    public async Task<Friendship> CreateEditFriendship(Friendship friendship)
     {
-        _friendshipService.CreateEditFriendship(DogOneId, DogTwoId, FriendshipTypeId);
+        await _friendshipService.CreateEditFriendship(friendship);
+
+        return friendship;
     }
 
 
