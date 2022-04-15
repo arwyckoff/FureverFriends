@@ -46,7 +46,7 @@ export class DogCreateEditPageComponent implements OnInit {
         name: '',
         breed: '',
         description: '',
-        dob: '',
+        dateOfBirth: '',
         location: '',
         interests: '',
         size: ''
@@ -60,11 +60,11 @@ export class DogCreateEditPageComponent implements OnInit {
       this.formGroup = this.formBuilder.group({
         name: dog.name,
         breed: dog.breed,
-        description: '',
-        dob: '',
-        location: '',
-        interests: '',
-        size: ''
+        description: dog.description,
+        dateOfBirth: dog.dateOfBirth,
+        location: dog.location,
+        interests: dog.interests,
+        size: dog.sizeId
       });
     }
   }
