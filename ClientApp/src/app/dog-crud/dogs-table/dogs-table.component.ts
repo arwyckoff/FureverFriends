@@ -18,4 +18,8 @@ export class DogsTableComponent implements OnInit {
   handleNavigateToCreateEdit (dogId: number|string) {
     this.router.navigate(['dogs/' + dogId]);
   }
+
+  handleNavigateToFriends(dogId: number) {
+    this.router.navigate(['friends/' + dogId]);
+  }
 }

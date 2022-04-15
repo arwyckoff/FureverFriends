@@ -23,11 +23,11 @@
       <td style="text-align:left" *ngIf="dog.interests; else none">{{ dog.interests }}</td>
       <td style="text-align:center"><div class="btn-group dropright">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropright
+          Select
         </button>
         <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Edit Dog</a>
-        <a class="dropdown-item" href="#">See Friendships</a>
+        <button class="dropdown-item" (click)="handleNavigateToCreateEdit(dog.id)">Edit Dog</button>
+        <button class="dropdown-item" (click)="handleNavigateToFriends(dog.id)">See Friendships</button>
         </div></div></td>
     </tr>
   </tbody>
