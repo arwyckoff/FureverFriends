@@ -1,8 +1,8 @@
 export interface Friendship {
-    dogAID: number;
-    dogAName: string;
-    dogBID: number;
-    dogBName: string;
+    dogOneID: number;
+    dogOneName: string;
+    dogTwoID: number;
+    dogTwoName: string;
     friendshipType: string;
     dateAdded: Date;
   }

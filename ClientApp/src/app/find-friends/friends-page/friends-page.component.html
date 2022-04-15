@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let friendship of friendships">
-            <td style="text-align:left">{{ friendship.dogAName != dog.name ? friendship.dogAName : friendship.dogBName }}</td>
+            <td style="text-align:left">{{ friendship.dogOneName != dog.name ? friendship.dogOneName : friendship.dogTwoName }}</td>
             <td style="text-align:left">{{ friendship.friendshipType }}</td>
             <td style="text-align:left">{{ friendship.dateAdded }}</td>
         </tr>

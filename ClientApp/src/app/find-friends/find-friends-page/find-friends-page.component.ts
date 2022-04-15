@@ -12,6 +12,7 @@ export class FindFriendsPageComponent implements OnInit {
   dogs: any;
   formGroup: FormGroup;
   searchResult: Dog[];
+  ready: boolean = false;
 
    constructor(private findFriendsService: FindFriendsService, 
       private formBuilder: FormBuilder) { }
@@ -24,7 +25,7 @@ export class FindFriendsPageComponent implements OnInit {
     const term = this.formGroup.value.term;
 
     this.searchResult = await this.findFriendsService.getSearch(term);
-
+    this.ready = true;
     return this.searchResult;
   }
 }

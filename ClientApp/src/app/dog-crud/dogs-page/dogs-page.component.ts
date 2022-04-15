@@ -10,11 +10,13 @@ import { DogCrudService } from '../dog-crud.service';
 })
 export class DogsPageComponent implements OnInit {
   dogs: Dog[] = [];
+  ready: boolean = false;
   constructor(
     private dogCrudService: DogCrudService
   ) { }
 
   async ngOnInit() {
     this.dogs = await this.dogCrudService.getDogs();
+    this.ready = true;
    }
 }
