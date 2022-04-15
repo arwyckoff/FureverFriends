@@ -15,6 +15,7 @@ export class DogCreateEditPageComponent implements OnInit {
   dog: Dog = null;
   header: string = '';
   buttonText: string = '';
+  existingDog: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,7 +24,11 @@ export class DogCreateEditPageComponent implements OnInit {
   ) { }
 
   get isNew () {
-    return this.dogId === 'new';
+    const retVal = this.dogId === 'new';
+
+    this.existingDog = retVal ? false : true;
+
+    return retVal;
   }
 
   async ngOnInit() {
@@ -64,8 +69,16 @@ export class DogCreateEditPageComponent implements OnInit {
     }
   }
 
-  handleCreateEdit (dogId: number|null) {
-    //TODO: Replace with call to endpoint
-    this.dogCrudService.getDog(1);
+  handleCreateEdit () {
+    const dog = this.formGroup.value as Dog;
+
+    this.dogCrudService.createOrUpdateDog(dog);
+
+    if (!this.existingDog){
+      this.existingDog = true;
+
+      this.header = 'Editing ' + dog.name + '!';
+      this.buttonText = 'Update';
+    }
   }
 }

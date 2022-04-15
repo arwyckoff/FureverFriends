@@ -17,4 +17,8 @@ export class DogCrudResources {
   getDog (id: number) {
     return this.http.get<Dog>('DogCrud/GetDog?Id=' + id).toPromise();
   }
+
+  createOrUpdateDog (dog: Dog) {
+    return this.http.post<Dog>('DogCrud/CreateOrUpdateDog', dog).toPromise();
+  }
 }
