@@ -15,6 +15,7 @@ namespace FureverFriends.Models
 
         public virtual DbSet<BuildVersion> BuildVersions { get; set; } = null!;
         public virtual DbSet<Dog> Dogs { get; set; } = null!;
+        public virtual DbSet<Size> Sizes { get; set; } = null!;
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -48,12 +49,44 @@ namespace FureverFriends.Models
 
                 entity.Property(e => e.VersionDate).HasColumnType("datetime");
             });
-
+            modelBuilder.Entity<Size>(entity => {
+              entity.ToTable("Sizes");
+            });
             modelBuilder.Entity<Dog>(entity =>
             {
                 entity.Property(e => e.Name)
                     .HasMaxLength(100)
                     .IsUnicode(false);
+                
+                entity.Property(e => e.Breed)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DateOfBirth)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Location)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Interests)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ImageURL)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                // entity.HasOne(e => e.Size)
+                //     .WithMany()
+                //     .HasForeignKey(entity => entity.SizeId)
+                //     .IsRequired(false);
+                
             });
 
             modelBuilder.Entity<ErrorLog>(entity =>
