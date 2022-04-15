@@ -11,6 +11,7 @@ import { FindFriendsPageComponent } from './find-friends/find-friends-page/find-
 import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FriendsPageComponent } from './find-friends/friends-page/friends-page.component';
+import { DogSizeTextPipe } from './dog-crud/dog-size.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FriendsPageComponent } from './find-friends/friends-page/friends-page.c
     DogsTableComponent,
     DogsPageComponent,
     DogCreateEditPageComponent,
-    FriendsPageComponent
+    FriendsPageComponent,
+    DogSizeTextPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

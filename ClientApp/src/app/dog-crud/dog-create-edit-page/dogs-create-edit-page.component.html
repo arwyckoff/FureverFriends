@@ -36,12 +36,12 @@
   <div class="row">
     <div class="col">
       <label for="size" class="form-label">Size</label>
-      <select class="form-control form-select" id="size" formControlName="size">
-        <option>Extra Small</option>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-        <option>Extra Large</option>
+      <select class="form-control form-select" id="sizeId" formControlName="sizeId">
+        <option [value]="Size.XS">Extra Small</option>
+        <option [value]="Size.S">Small</option>
+        <option [value]="Size.M">Medium</option>
+        <option [value]="Size.L">Large</option>
+        <option [value]="Size.XL">Extra Large</option>
       </select>
     </div>
     <div class="col" style="position: relative;">

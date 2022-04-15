@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Dog } from 'src/app/typings/dog.typing';
+import { Dog, Size } from 'src/app/typings/dog.typing';
 import { DogCrudService } from '../dog-crud.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class DogCreateEditPageComponent implements OnInit {
   header: string = '';
   buttonText: string = '';
   existingDog: boolean = false;
+  Size = Size;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,7 +50,7 @@ export class DogCreateEditPageComponent implements OnInit {
         dateOfBirth: '',
         location: '',
         interests: '',
-        size: ''
+        sizeId: ''
       });
     } else {
       const dog = await this.dogCrudService.getDog(this.dogId as number);
@@ -65,13 +66,13 @@ export class DogCreateEditPageComponent implements OnInit {
         dateOfBirth: dog.dateOfBirth,
         location: dog.location,
         interests: dog.interests,
-        size: dog.sizeId
+        sizeId: dog.sizeId
       });
     }
   }
 
   handleCreateEdit () {
-    const dog = this.formGroup.value as Dog;
+    const dog: Dog = this.formGroup.value;
 
     this.dogCrudService.createOrUpdateDog(dog);
 

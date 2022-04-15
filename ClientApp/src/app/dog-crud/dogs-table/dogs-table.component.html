@@ -19,7 +19,7 @@
       <td style="text-align:left" *ngIf="dog.description; else none">{{ dog.description }}</td>
       <td style="text-align:left" *ngIf="dog.dateOfBirth; else none">{{ dog.dateOfBirth }}</td>
       <td style="text-align:left" *ngIf="dog.location; else none">{{ dog.location }}</td>
-      <td style="text-align:left" *ngIf="dog.sizeId; else none">{{ dog.sizeId }}</td>
+      <td style="text-align:left" *ngIf="dog.sizeId; else none">{{ dog.sizeId | appDogSizeText }}</td>
       <td style="text-align:left" *ngIf="dog.interests; else none">{{ dog.interests }}</td>
       <td style="text-align:center"><div class="btn-group dropright">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
