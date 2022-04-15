@@ -58,6 +58,7 @@ export class DogCreateEditPageComponent implements OnInit {
       this.buttonText = 'Update';
       
       this.formGroup = this.formBuilder.group({
+        id: dog.id,
         name: dog.name,
         breed: dog.breed,
         description: dog.description,

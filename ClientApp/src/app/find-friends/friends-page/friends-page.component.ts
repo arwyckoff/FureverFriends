@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { DogCrudService } from 'src/app/dog-crud/dog-crud.service';
 import { Dog } from 'src/app/typings/dog.typing';
 import { Friendship } from 'src/app/typings/friendship.typing';
 import { FindFriendsService } from '../find-friends.service';
@@ -19,10 +20,12 @@ export class FriendsPageComponent implements OnInit {
    constructor(
       private findFriendsService: FindFriendsService, 
       private activatedRoute: ActivatedRoute,
-      private formBuilder: FormBuilder) { }
+      private formBuilder: FormBuilder,
+      private dogCrudService: DogCrudService) { }
 
   async ngOnInit() {
     this.dogId = this.activatedRoute.snapshot.params.id;
+    this.dog = await this.dogCrudService.getDog(this.dogId);
     await this.GetFriends();
     this.formGroup = this.formBuilder.group({term: ''});
   }
