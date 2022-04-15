@@ -10,6 +10,6 @@
     <button (click)="getSearch()" type="submit" class="btn btn-primary">Search</button>
   </form>
 <br>
-  <app-dogs-table *ngIf="searchResult.length > 0" [dogs]="searchResult" [isSearch]=true>
+  <app-dogs-table *ngIf="formGroup.value.term" [dogs]="searchResult" [isSearch]=true>
 
   </app-dogs-table>
