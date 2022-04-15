@@ -15,22 +15,23 @@
   <tbody>
     <tr *ngFor="let dog of dogs">
       <td style="text-align:left">{{ dog.name }}</td>
-      <td style="text-align:left">{{ dog.breed }}</td>
-      <td style="text-align:left">DESCRIPTION</td>
-      <td style="text-align:left">DOB</td>
-      <td style="text-align:left">LOCATION</td>
-      <td style="text-align:left">SIZE</td>
-      <td style="text-align:left">INTERESTS</td>
-      <td style="text-align:center"><button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+      <td style="text-align:left" *ngIf="dog.breed; else none">{{ dog.breed }}</td>
+      <td style="text-align:left" *ngIf="dog.description; else none">{{ dog.description }}</td>
+      <td style="text-align:left" *ngIf="dog.dateOfBirth; else none">{{ dog.dateOfBirth }}</td>
+      <td style="text-align:left" *ngIf="dog.location; else none">{{ dog.location }}</td>
+      <td style="text-align:left" *ngIf="dog.sizeId; else none">{{ dog.sizeId }}</td>
+      <td style="text-align:left" *ngIf="dog.interests; else none">{{ dog.interests }}</td>
+      <td style="text-align:center"><div class="btn-group dropright">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropright
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        </div></td>
+        <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Edit Dog</a>
+        <a class="dropdown-item" href="#">See Friendships</a>
+        </div></div></td>
     </tr>
   </tbody>
 </table>
 
 <ng-template #no_results>No results found.</ng-template>
+<ng-template #none><td style="text-align:left">None</td></ng-template>
