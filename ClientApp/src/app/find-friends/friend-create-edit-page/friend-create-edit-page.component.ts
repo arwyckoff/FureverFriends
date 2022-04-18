@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DogCrudService } from 'src/app/dog-crud/dog-crud.service';
 import { Dog, Size } from 'src/app/typings/dog.typing';
 import { Friendship, FriendshipType } from 'src/app/typings/friendship.typing';
@@ -28,7 +28,8 @@ export class FriendCreateEditPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private dogCrudService: DogCrudService,
-    private findFriendsService: FindFriendsService
+    private findFriendsService: FindFriendsService,
+    private router: Router
   ) { }
 
   get isNew () {
@@ -106,8 +107,6 @@ export class FriendCreateEditPageComponent implements OnInit {
 
       this.header = 'Editing ' + this.dog.name + '\'s Friend!';
       this.buttonText = 'Update';
-
-      alert('Adding new Frinedship for ' + this.dog.name + ' and ' + this.dogs.filter(x => x.id == this.formGroup.value.name)[0].name);
     }
     else{
       friend = {
@@ -119,15 +118,14 @@ export class FriendCreateEditPageComponent implements OnInit {
         dogTwoName: this.dogs.filter(x => x.id == this.formGroup.value.name)[0].name,
         id: this.friendId as number
       };
-
-      alert('Editing Frinedship for ' + this.dog.name + ' and ' + this.dogs.filter(x => x.id == this.formGroup.value.name)[0].name);
     }
 
     this.findFriendsService.createOrUpdateFriend(friend);
   }
 
   handleDelete () {
-    alert('Deleting Frinedship with Id ' + this.friendId);
     this.findFriendsService.deleteFriend(this.friendId as number);
+    
+    this.router.navigate(['friends/' + this.dogId]);
   }
 }
