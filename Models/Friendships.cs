@@ -8,5 +8,6 @@ namespace FureverFriends.Models
         public int DogTwoId { get; set; }
         public string? DogTwoName  { get; set; }
         public int FriendshipTypeId  { get; set; }
+        public string? DateAdded { get; set; }
     }
 }

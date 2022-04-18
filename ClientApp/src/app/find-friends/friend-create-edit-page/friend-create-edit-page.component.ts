@@ -123,11 +123,11 @@ export class FriendCreateEditPageComponent implements OnInit {
       alert('Editing Frinedship for ' + this.dog.name + ' and ' + this.dogs.filter(x => x.id == this.formGroup.value.name)[0].name);
     }
 
-    //this.findFriendsService.createOrUpdateFriend(friend);
+    this.findFriendsService.createOrUpdateFriend(friend);
   }
 
   handleDelete () {
     alert('Deleting Frinedship with Id ' + this.friendId);
-    //this.findFriendsService.deleteFriend(this.friendId as number);
+    this.findFriendsService.deleteFriend(this.friendId as number);
   }
 }
