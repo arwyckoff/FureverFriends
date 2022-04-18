@@ -16,6 +16,14 @@ export class FindFriendsResources {
   }
 
   getFriends(dogId: number) {
-    return this.http.get<Friendship[]>('FriendshipCrud/GetFriendships?dogId=' + dogId).toPromise();
+    return this.http.get<Friendship[]>('FriendshipCrud/GetFriendshipsForDog?dogId=' + dogId).toPromise();
+  }
+
+  deleteFriend(friendId: number) {
+    return this.http.post<number>('FriendshipCrud/DeleteFriendship?FriendshipId=' + friendId, null).toPromise();
+  }
+
+  createOrUpdateFriend(friendship: Friendship) {
+    return this.http.post<Friendship>('FriendshipCrud/CreateEditFriendship', friendship).toPromise();
   }
 }

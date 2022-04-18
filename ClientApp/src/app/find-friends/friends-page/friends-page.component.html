@@ -7,14 +7,15 @@
             <th scope="col" style="text-align:center">Friendship Type</th>
             <th scope="col" style="text-align:center">Date Added</th>
             <th scope="col" style="text-align:center">
-                <button class="btn btn-primary">Add Friendship</button></th>
+                <button class="btn btn-primary" (click)="handleNavigateToCreateEdit(dogId + '/new')">Add Friendship</button></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let friendship of friendships">
-            <td style="text-align:left">{{ friendship.dogOneName != dog.name ? friendship.dogOneName : friendship.dogTwoName }}</td>
-            <td style="text-align:left">{{ friendship.friendshipTypeId | appFriendShipTypeText }}</td>
-            <td style="text-align:left">{{ friendship.dateAdded }}</td>
+            <td style="text-align:center">{{ friendship.dogOneName != dog.name ? friendship.dogOneName : friendship.dogTwoName }}</td>
+            <td style="text-align:center">{{ friendship.friendshipTypeId | appFriendShipTypeText }}</td>
+            <td style="text-align:center">{{ friendship.dateAdded }}</td>
+            <td style="text-align:center"><button class="btn btn-primary" (click)="handleNavigateToCreateEdit(dogId + '/' + friendship.id)">Edit Friendship</button></td>
         </tr>
     </tbody>
 </table>

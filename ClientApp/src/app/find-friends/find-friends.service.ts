@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Friendship } from '../typings/friendship.typing';
 import { FindFriendsResources } from './find-friends.resources';
 
 @Injectable({
@@ -32,6 +33,32 @@ export class FindFriendsService {
         console.error(e);
   
       return [];
+      }
+  }
+
+  async deleteFriend(friendId: number)
+  {
+      try {
+        const data = await this.findFriendsResources.deleteFriend(friendId);
+
+        return data;
+      } catch (e) {
+        console.error(e);
+  
+      return null;
+      }
+  }
+
+  async createOrUpdateFriend(friendship: Friendship)
+  {
+      try {
+        const data = await this.findFriendsResources.createOrUpdateFriend(friendship);
+
+        return data;
+      } catch (e) {
+        console.error(e);
+  
+      return null;
       }
   }
 }
